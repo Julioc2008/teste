@@ -3,57 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniversario Da Alessandra</title>
-</head>
-<body>
-    <main class="container">
-        <form>
-            <h1>Feliz Aniversario Alessandra!</h1>
-            <a href="https://www.youtube.com/watch?v=L653uCp77QE&t=7s" target="_blank">
-Exclusivo Para Você Amor!</a>
+    <title>Lembranças da Alessandra 18 anos de Vida</title>
 
-    </form>
-    </main>
-</body>
-</html>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #fc0404;
-        background-image: url(campo.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 100px;
-    }
-    .container {
-        background-color: #ffffff07;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 20px;
-        border-radius: 100px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        text-align: center;
-        width: 400px;
-        height: 200px;
-        display: flex;        
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    h1 {
-        color: #ff0000;
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 4px #000000;
-    }
+    <style>
+        /* ========================================= */
+        /* ESTILOS GERAIS */
+        /* ========================================= */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1d214b;
+            color: #000000;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .secao {
+            margin-top: 25px;
+            padding: 15px 0;
+        }
+        h2 {
+            color: #c71d1d;
+            margin-bottom: 10px;
+        }
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .galeria figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .galeria img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer; /* Adicionado para indicar que é clicável */
+            transition: transform 0.2s;
+        }
+        .galeria img:hover {
+            transform: scale(1.02);
+        }
+        .texto-destaque {
+            background-color: #ddddddcc;
+            padding: 15px;
+            border-left: 5px solid #ff0707;
+            border-right: 5px solid #ff0707;
+            margin-top: 20px;
+        }
+
+        /* ========================================= */
+        /* 1. ESTILOS DO SPLASH SCREEN (FUNDO TOTAL) */
+        /* ========================================= */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 5s ease-out, visibility 5s ease-out;
+            visibility: visible;
+            background-color: #000000;
+            background-image: url('campo.jpg'); /* Mude para o nome do seu arquivo! */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .splash-title {
+            color: Black;
+            font-family: 'Honk', sans-serif;
+            font-size: 2em;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border-radius: 8px;
+            line-height: 1.2;
+        }
+        .hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        #main-content {
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        /* ========================================= */
+        /* 2. ESTILOS DO TÍTULO ANIMADO */
+        /* ========================================= */
+        @keyframes mover {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+        .titulo-animado {
+            animation: mover 1.0s infinite alternate;
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* ========================================= */
+        /* 3. ESTILOS DO MODAL (LIGHTBOX) - NOVO */
+        /* ========================================= */
+        .modal {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            z-index: 10000; /* Fica acima de tudo, inclusive do splash (9999) */
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9); /* Preto com transparência */
+        }
+        .modal-conteudo {
+            margin: auto;
+            display: block;
+            width: 80%; /* Largura máxima da imagem na tela */
+            max-width: 900px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .fechar {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 10001;
+        }
+        .fechar:hover,
+        .fechar:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
 
     </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <h1 class="splash-title">Feliz Aniversário🥳</h1>
+    </div>
+
+    <div id="main-content">
+        <h2>Parabéns Lê, Parabens Sandra, Parabéns Dory</h2>
+    </div>
+
+    <div class="container">
+        <h1>Lembranças da Alessandra 18 anos de Vida</h1>
+        <p class="texto-destaque">
+            Bom aqui esta a página de lembranças, O destino será momentos que marcaram
+            e Textos com muitos sentimentos....
+        </p>
+        
+        <div class="secao">
+            <h2>O que ela significa para você, ela é tudo pra mim</h2>
+            <div class="galeria">
+                <figure>
+                    <img src="bety.jpg.JPG" alt="Beijo" onclick="abrirModal(this.src)">
+                    <figcaption>Te Amo Filha😘</figcaption>
+                </figure>
+                <div class="container" style="background-color: #f8f8f8; padding: 15px; margin-top: 20px;">
+                    <p>Dona Bety♡</p>
+                    <p>Você é minha querida filha, Minha companheira de todas as horas.💖</p>
+                </div>
+            </div>
+            <p style="text-align: justify; padding: 15px;">
+                Parabéns Dory, você realize todos seus sonhos e continue sendo uma mulher incrível
+                igual você é, saiba que Eu te amo muito sempre que precisar estarei aqui para o que der e vier, Eu e Você para sempre.💘
+            </p>
+        </div>
+
+        <div class="secao">
+            <h2>Galeria de Mometos</h2>
+            <div class="galeria">
+                <figure><img src="pescaria.jpg.JPG" alt="Pescando Juntos" onclick="abrirModal(this.src)"><figcaption>Primeira Pesca Juntos</figcaption></figure>
+                <figure><img src="momentos.jpg" alt="Eu Te Amo" onclick="abrirModal(this.src)"><figcaption>Momentos especiais Eu Te Amo</figcaption></figure>
+                <figure><img src="cinema.jpg.JPG" alt="Nosso Passeio" onclick="abrirModal(this.src)"><figcaption>Primeira vez saindo juntos</figcaption><figcaption>Primeira vez juntos no cinema</figcaption></figure>
+                <figure><img src="frase.jpg.JPG" alt="Um lindo Momento Juntos" onclick="abrirModal(this.src)"><figcaption>Eu te amo♥️</figcaption></figure>
+                <figure><img src="Beijo.jpg.JPG" alt="HeHeHeHeHeHeHeHeHe" onclick="abrirModal(this.src)"><figcaption>Aquela foto marcante</figcaption></figure>
+                <figure><img src="muitxo.jpg.JPG" alt="EU e Voce" onclick="abrirModal(this.src)"><figcaption>HaHaHaHaHaHaHaHaHa</figcaption></figure>
+                <figure><img src="filinha.jpg.PNG" alt="Filha" onclick="abrirModal(this.src)"><figcaption>Filha♥️</figcaption></figure>
+                <figure><img src="betyele.jpg.PNG" alt="😍😍" onclick="abrirModal(this.src)"><figcaption>TE AMO Lê😍</figcaption></figure>
+                <figure><img src="engracado.jpg.JPG" alt="HAHAHAHA" onclick="abrirModal(this.src)"><figcaption>Engraçadinha</figcaption></figure>
+                <figure><img src="Beleza.JPG" alt="LINDAA" onclick="abrirModal(this.src)"><figcaption>È Lindaa É Muitxo Linda</figcaption></figure>
+                <figure><img src="Bigodinho.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Bigodinho</figcaption></figure>
+                <figure><img src="Empé.PNG" alt="." onclick="abrirModal(this.src)"><figcaption>Mocinha🙃</figcaption></figure>
+                <figure><img src="rosto.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>🙃</figcaption></figure>
+                <figure><img src="Pé.PNG" alt="." onclick="abrirModal(this.src)"><figcaption>💞​</figcaption></figure>
+                <figure><img src="Familia.PNG" alt="." onclick="abrirModal(this.src)"><figcaption>Family​</figcaption></figure>
+                <figure><img src="irmao.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Irmão​</figcaption></figure>
+                <figure><img src="BoloRosa.PNG" alt="." onclick="abrirModal(this.src)"><figcaption>Festinha com seu Bolo Rosa</figcaption></figure>
+                <figure><img src="Prézinho.PNG" alt="." onclick="abrirModal(this.src)"><figcaption>Brother​</figcaption></figure>
+                <figure><img src="bebezinha.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Bebê​</figcaption></figure>
+                <figure><img src="Vestidinho.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Niver​</figcaption></figure>
+                <figure><img src="Primeiro.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Inesquecível​</figcaption></figure>
+                <figure><img src="escolinha.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Sempre Inteligente</figcaption></figure>
+                <figure><img src="Lindos.jpg" alt="." onclick="abrirModal(this.src)"><figcaption>Dia Lindo, Foto Linda​</figcaption></figure>
+                <figure><img src="maeefilha.jpg.PNG" alt="." onclick="abrirModal(this.src)"><figcaption>Parabéns Minha Filha</figcaption></figure>
+                <figure><img src="sorrindo.jpg.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Oh Sorriso mais encantador!​</figcaption></figure>
+                <figure><img src="bonita.jpg.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Mdss 😻​</figcaption></figure>
+                <figure><img src="Muie.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Eitxa o Olhar dela ☺️​😍​​</figcaption></figure>
+                <figure><img src="Vermelho.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Até que Arrumadinha😎​</figcaption></figure>
+                <figure><img src="Emanuel.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>​My brother</figcaption></figure>
+                <figure><img src="sim.JPG" alt="." onclick="abrirModal(this.src)"><figcaption>Hipnotizantezante a mulher que eu Tenho!</figcaption></figure>
+            </div>
+            <p style="margin-top: 100px; font-family: 'Georgia', serif;">
+                Momentos tão especiais e marcantes com pessoas mais que importantes🥰
+            </p>
+        </div>
+
+        <div class="secao">
+            <h2>Carta Aberta</h2>
+            <p>Mãe para Lê</p>
+            <audio controls>
+                <source src="AudioBety.m4a" type="audio/mpeg">
+                <source src="AudioBety.mp3" type="audio/ogg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <p>
+                Hoje é seu aniversário minha filha uma data especial não apenas para você mas também para mim pois recordo um dos momentos mais felizes da minha vida você chegou ao meus braços depois de ter compartilhado existências no meu corpo e no meu coração nasceu um amor que é tão grande Tão imenso que não existe comparação possível com nada feliz aniversário meu amor
+            </p>
+            <p>
+                Feliz Aniversário Alessandra 18 anos sendo a luz e o sentido de nossas Vidas!
+            </p>
+        </div>
+
+        <div class="secao">
+            <h2>Hailton para Sandra</h2>
+            <p>
+                Filha você é muito Importante para mim, Deus Abençoe você filha sempre estarei aqui com você, conte comigo para tudo eu sempre vou estar aqui Sandra.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <h1>
+                <a href="https://fãdegreysanatomy.my.canva.site/"
+                   target="_blank"
+                   class="titulo-animado">
+                    Parabéns Dory🤍
+                </a>
+            </h1>
+        </div>
+
+    </div> <div id="modal-imagem" class="modal">
+        <span class="fechar" onclick="fecharModal()">&times;</span>
+        <img class="modal-conteudo" id="img-ampliada">
+        <div id="modal-legenda"></div>
+    </div>
 
 
+    <script>
+        // FUNÇÃO PARA O SPLASH SCREEN
+        document.addEventListener('DOMContentLoaded', () => {
+            const splash = document.getElementById('splash-screen');
+            const delayTime = 3000; // 3 segundos
 
+            setTimeout(() => {
+                splash.classList.add('hidden');
+                
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 1000); // 1s é o tempo da transição
+            }, delayTime);
+        });
 
+        // FUNÇÕES DO MODAL (LIGHTBOX) - NOVO JAVASCRIPT
+        const modal = document.getElementById("modal-imagem");
+        const imgAmpliada = document.getElementById("img-ampliada");
 
+        // Função para abrir o modal
+        function abrirModal(srcDaImagem) {
+            modal.style.display = "block";
+            imgAmpliada.src = srcDaImagem;
+        }
 
+        // Função para fechar o modal
+        function fecharModal() {
+            modal.style.display = "none";
+        }
+
+        // Fechar o modal ao clicar fora da imagem
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                fecharModal();
+            }
+        }
+    </script>
+
+</body>
+</html>
