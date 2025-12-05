@@ -3,219 +3,569 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao nosso QR Code!</title>
+    <title>Lembranças da Alessandra 18 anos de Vida</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Honk&display=swap" rel="stylesheet">
     
     <style>
-        /* ==================== VARIÁVEIS DE CORES E FONTES ==================== */
+        /* ================================================= */
+        /* VARIÁVEIS CSS E ESTILOS GERAIS */
+        /* ================================================= */
         :root {
-            --cor-titulos: #ff0000; /* Vermelho vivo para os títulos */
-            --fonte-romantica: 'Dancing Script', cursive;
-            --fonte-elegante: 'Playfair Display', serif;
-            --cor-fundo-geral: #ff0000;
+            --cor-principal: #1d214b;
+            --cor-destaque: #c71d1d;
+            --cor-fundo-card: #ffffff;
+            --cor-texto-padrao: #333333;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--cor-fundo-geral);
-            color: #333;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        /* ==================== 2. SPLASH SCREEN (FUNDO E ANIMAÇÃO) ==================== */
-        #splash-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 9999;
-            background-color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 1s ease, visibility 1s ease;
-            
-            /* Fundo Escuro para contraste */
-            background: linear-gradient(135deg, #3a0000 0%, #0a192f 100%);
+            /* Fundo Gradiente e Fixo (UX Melhorada) */
+            background: linear-gradient(135deg, var(--cor-principal) 0%, #3e4a8b 100%);
+            background-attachment: fixed;
+            color: var(--cor-texto-padrao);
+            line-height: 1.6;
         }
 
-        .splash-title {
-            color: #fff; /* Branco no splash para contraste */
-            font-family: var(--fonte-romantica);
-            font-size: clamp(3em, 8vw, 5em);
-            text-align: center;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* Brilho vermelho */
-            padding: 20px;
-            animation: pulseTitle 2s infinite; /* Aplica a animação */
-        }
-
-        @keyframes pulseTitle {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Classe para esconder o splash com transição */
-        .hidden { 
-            opacity: 0 !important; 
-            visibility: hidden !important; 
-            pointer-events: none; 
-        }
-
-        /* ==================== 3. LIGHTBOX (PARA ABRIR IMAGEM) ==================== */
-        #lightbox {
-            position: fixed;
-            z-index: 10000;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(10, 25, 47, 0.95); /* Fundo azul escuro */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
-
-        #lightbox.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-            border: 5px solid #fff;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        #lightbox.active img { transform: scale(1); }
-
-        /* ==================== ESTILOS DO CONTAINER PRINCIPAL ==================== */
+        /* 2. BORDA DECORATIVA E CONTAINER PRINCIPAL */
         .container {
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            max-width: 80%;
-            min-width: 300px;
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: var(--cor-fundo-card);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
         }
 
-        /* TÍTULO COM FONTE ROMÂNTICA */
-        h1 {
-            font-family: var(--fonte-romantica); 
-            color: var(--cor-titulos);
-            font-size: 3em;
-            margin-bottom: 10px;
+        /* Borda Decorativa com pseudo-elemento */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            bottom: -20px;
+            left: -20px;
+            border: 6px solid var(--cor-destaque);
+            border-radius: 25px;
+            pointer-events: none;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        /* 4. FONTES ROMÂNTICAS SOMENTE NOS TÍTULOS */
+        h1, h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--cor-destaque);
+            text-align: center;
+            padding-bottom: 10px;
         }
         
-        p {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 25px;
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
         }
 
-        /* ESTILO PARA AS IMAGENS CLICÁVEIS */
+        h2 {
+            font-size: 2em;
+            margin-top: 30px;
+        }
+        
+        /* Estilos do Bloco de Texto Destaque */
+        .texto-destaque {
+            background-color: #ddddddcc;
+            padding: 15px;
+            border-left: 5px solid var(--cor-destaque);
+            border-right: 5px solid var(--cor-destaque);
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Ajuste do Parágrafo com estilo inline incorreto */
+        p.justificado {
+            text-align: justify;
+        }
+
+        /* ================================================= */
+        /* GALERIA E LIGHTBOX */
+        /* ================================================= */
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .galeria figure {
+            margin: 0;
+            padding: 0;
+            max-width: 250px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .galeria figure:hover {
+            transform: translateY(-5px);
+        }
+
         .galeria img {
             width: 100%;
-            max-width: 150px;
             height: auto;
-            border-radius: 8px;
-            margin: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: block;
             cursor: zoom-in; /* Indica que é clicável */
-            transition: transform 0.2s;
+            transition: opacity 0.3s;
         }
-
+        
         .galeria img:hover {
-            transform: scale(1.05);
+            opacity: 0.8;
         }
 
-        .call-to-action {
-            background-color: #28a745;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 1.2em;
+        figcaption {
+            background-color: #f7f7f7;
+            padding: 8px;
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Estilo para o Lightbox (Modal de Zoom) */
+        .lightbox {
+            display: none; 
+            position: fixed; 
+            z-index: 10000; 
+            padding-top: 60px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 10px;
+        }
+
+        .lightbox-caption {
+            margin: 15px auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
             cursor: pointer;
-            transition: background-color 0.3s;
+        }
+        
+        /* ================================================= */
+        /* 3. ANIMAÇÃO DE TÍTULO/TEXTO */
+        /* ================================================= */
+
+        /* Keyframes para mover suavemente */
+        @keyframes mover {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
         }
 
-        .call-to-action:hover {
-            background-color: #218838;
+        /* Estilo base do link animado */
+        .titulo-animado a {
+            font-family: 'Dancing Script', cursive; /* Aplica a fonte romântica */
+            animation: mover 1.5s infinite alternate; /* Aplica a animação */
+            display: inline-block;
+            text-decoration: none;
+            color: white; /* Cor branca para o destaque fora do container branco */
+            font-size: 2.2em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para destacar no fundo */
+        }
+        
+        /* Animação inversa para o segundo link (opcional, para dar mais vida) */
+        .titulo-animado.outro a {
+             animation: mover 1.5s infinite alternate-reverse;
+        }
+        
+        /* ================================================= */
+        /* 5. SPLASH SCREEN E GLASS MORPHISM */
+        /* ================================================= */
+
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 3s ease-out, visibility 3s ease-out; /* Tempo de transição reduzido para 3s */
+            visibility: visible;
+            background-color: #000000;
+            background-image: url('campo.jpg'); /* Verifique se o nome do arquivo está correto! */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Efeito Glassmorphism (Vidro Fosco) no Título do Splash */
+        .splash-title {
+            font-family: 'Honk', cursive;
+            font-size: 3em;
+            text-align: center;
+            color: white; /* Texto em branco */
+            padding: 20px 40px;
+            border-radius: 12px;
+            
+            /* EFEITO GLASS MORPHISM */
+            background-color: rgba(255, 255, 255, 0.15); /* Fundo branco semi-transparente */
+            backdrop-filter: blur(10px); /* Efeito fosco principal */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+
+        .hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        
+        /* Esconder o conteúdo principal inicialmente para carregar após o Splash */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+        
+        .visible {
+            opacity: 1 !important;
+        }
+        
+        /* Responsividade para telas menores */
+        @media (max-width: 600px) {
+            .container {
+                max-width: 95%;
+                margin: 20px auto;
+            }
+            .splash-title {
+                font-size: 2em;
+            }
+            .container::before {
+                top: -10px;
+                right: -10px;
+                bottom: -10px;
+                left: -10px;
+                border: 3px solid var(--cor-destaque);
+            }
+            .lightbox-content {
+                width: 95%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
-        <h1 class="splash-title">Bem-vindo!</h1>
+        <h1 class="splash-title">Feliz Aniversário Alessandra​🥳</h1>
     </div>
 
-    <div id="lightbox">
-        <img id="lightbox-img" src="" alt="Zoom da imagem">
-    </div>
+    <div id="main-content">
+        
+        <h1 class="titulo-animado">
+            <a href="https://fãdegreysanatomy.my.canva.site/" target="_blank">
+                Parabéns Dory🤍️
+            </a>
+        </h1>
+        <h1 class="titulo-animado outro">
+            <a href="https://youtu.be/_gGI0N11lzw?si=WA5C5Nb8Winv-ND7" target="_blank">
+                Aqui está seu Vídeo❤️
+            </a>
+        </h1>
 
-    <div class="container">
-        <h1>Bem-vindo!</h1>
-        <p>Parabéns Amor 18 Anos!</p>
-        <p>Aqui está algumas coisas que tenho certeza que serão inesquecíveis. 💭​😉​</p>
+        <div class="container">
+            <h1>Lembranças da Alessandra 18 anos de Vida</h1>
+            
+            <p class="texto-destaque">
+                Bom aqui esta a página de lembranças. O destino será momentos que marcaram e Textos com muitos sentimentos....
+            </p>
 
-        <div class="galeria">
-            <img src="bety.jpg.JPG" alt="Exemplo Foto 1">
-            <img src="pescaria.jpg.JPG" alt="Exemplo Foto 2">
-            <img src="momentos.jpg" alt="Exemplo Foto 3">
+            <div class="secao">
+                <h2>O que ela significa para você? Ela é tudo para mim.</h2>
+                <div class="galeria">
+                    <figure>
+                        <img src="bety.jpg.JPG" alt="Beijo" title="Clique para Ampliar">
+                        <figcaption>Te Amo Filha😘</figcaption>
+                    </figure>
+                </div>
+                
+                <div class="texto-destaque" style="background-color: #f0f0f0cc; border-color: var(--cor-principal);">
+                    <p style="font-weight: bold; color: var(--cor-principal);">Dona Bety♡</p>
+                    <p>Você é minha querida filha, Minha companheira de todas as horas.💖</p>
+                </div>
+                
+                <p class="justificado">
+                    Parabéns Dory, que você realize todos os seus sonhos e continue sendo uma mulher incrível igual você é. Saiba que Eu te amo muito. Sempre que precisar estarei aqui para o que der e vier, Eu e Você para sempre.💘
+                </p>
+            </div>
+
+            <hr> <div class="secao">
+                <h2>Galeria de Momentos</h2>
+                <div class="galeria">
+                    <figure>
+                        <img src="pescaria.jpg.JPG" alt="Pescando Juntos" title="Clique para Ampliar">
+                        <figcaption>Primeira Pesca Juntos</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="momentos.jpg" alt="Eu Te Amo" title="Clique para Ampliar">
+                        <figcaption>Momentos especiais Eu Te Amo</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="cinema.jpg.JPG" alt="Nosso Passeio" title="Clique para Ampliar">
+                        <figcaption>Primeira vez juntos no cinema</figcaption> 
+                    </figure>
+                    <figure>
+                        <img src="frase.jpg.JPG" alt="Um lindo Momento Juntos" title="Clique para Ampliar">
+                        <figcaption>Eu te amo♥️</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Beijo.jpg.JPG" alt="HeHeHeHeHeHeHeHeHe" title="Clique para Ampliar">
+                        <figcaption>Aquela foto marcante</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="muitxo.jpg.JPG" alt="EU e Voce" title="Clique para Ampliar">
+                        <figcaption>HaHaHaHaHaHaHaHaHa</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="filinha.jpg.PNG" alt="Filha" title="Clique para Ampliar">
+                        <figcaption>Filha♥️</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="betyele.jpg.PNG" alt="😍😍" title="Clique para Ampliar">
+                        <figcaption>TE AMO Lê😍</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="engracado.jpg.JPG" alt="HAHAHAHA" title="Clique para Ampliar">
+                        <figcaption>Engraçadinha</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Beleza.JPG" alt="LINDAA" title="Clique para Ampliar">
+                        <figcaption>È Lindaa É Muitxo Linda</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Bigodinho.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Bigodinho</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Empé.PNG" alt="." title="Clique para Ampliar">
+                        <figcaption>Mocinha🙃</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="rosto.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>🙃</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Pé.PNG" alt="." title="Clique para Ampliar">
+                        <figcaption>💞</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Familia.PNG" alt="." title="Clique para Ampliar">
+                        <figcaption>Family</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="irmao.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Irmão</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="BoloRosa.PNG" alt="." title="Clique para Ampliar">
+                        <figcaption>Festinha com seu Bolo Rosa</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Prézinho.PNG" alt="." title="Clique para Ampliar">
+                        <figcaption>Brother</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="bebezinha.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Bebê</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Vestidinho.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Niver</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Primeiro.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Inesquecível</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="escolinha.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Sempre Inteligente</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Lindos.jpg" alt="." title="Clique para Ampliar">
+                        <figcaption>Dia Lindo, Foto Linda</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="maeefilha.jpg.PNG" alt="." title="Clique para Ampliar">
+                        <figcaption>Parabéns Minha Filha</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="sorrindo.jpg.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Oh Sorriso mais encantador!</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="bonita.jpg.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Mdss 😻</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Muie.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Eitxa o Olhar dela ☺️😍</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Vermelho.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Até que Arrumadinha😎</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Emanuel.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>My brother</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="sim.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Hipnotizantezante a mulher que eu Tenho!</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Photo.png" alt="." title="Clique para Ampliar">
+                        <figcaption>Fotos com muitos sentimentos</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="MeuAniversario.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Primeiro Aniversário juntos!</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Lupa.png" alt="." title="Clique para Ampliar">
+                        <figcaption>Somos....</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Você.JPG" alt="." title="Clique para Ampliar">
+                        <figcaption>Essa é você! HeHeHeHe</figcaption>
+                    </figure>
+                </div>
+                
+                <p style="margin-top: 50px; text-align: center; font-style: italic; color: #555;">
+                    Momentos tão especiais e marcantes com pessoas mais que importantes🥰
+                </p>
+            </div>
+
+            <hr>
+
+            <div class="secao">
+                <h2>Carta Aberta</h2>
+                <p style="font-weight: bold;">Mãe para Lê</p>
+                <audio controls style="width: 100%; max-width: 400px; margin: 10px auto; display: block;">
+                    <source src="AudioBety.m4a" type="audio/mp4">
+                    <source src="AudioBety.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+                <p class="justificado">
+                    Hoje é seu aniversário minha filha, uma data especial não apenas para você mas também para mim, pois recordo um dos momentos mais felizes da minha vida. Você chegou aos meus braços depois de ter compartilhado existência no meu corpo e no meu coração. Nasceu um amor que é tão grande, Tão imenso que não existe comparação possível com nada. Feliz aniversário meu amor!
+                </p>
+                <p style="font-weight: bold; text-align: center;">
+                    Feliz Aniversário Alessandra! 18 anos sendo a luz e o sentido de nossas Vidas!
+                </p>
+            </div>
+
+            <hr>
+
+            <div class="secao">
+                <h2>Hailton para Sandra</h2>
+                <p class="justificado">
+                    Filha você é muito Importante para mim, Deus Abençoe você filha. Sempre estarei aqui com você, conte comigo para tudo, eu sempre vou estar aqui Sandra.
+                </p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: #777;">
+                Feito com muito amor e carinho.
+            </p>
         </div>
-
-        <a href="URL_DO_SEU_LINK" target="_blank" class="call-to-action" style="margin-top: 25px;">
-            Clique Aqui para Continuar
-        </a>
+    </div>
+    
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 
     <script>
+        // 5. Lógica do Splash Screen
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // ==================== LÓGICA DO SPLASH SCREEN ====================
             const splash = document.getElementById('splash-screen');
+            const mainContent = document.getElementById('main-content');
+            const delayTime = 4000; // 4 segundos de espera
+            const fadeTime = 3000; // 3 segundos de transição (deve ser o mesmo do CSS)
+
             setTimeout(() => {
                 splash.classList.add('hidden');
-                // Remove o elemento após a transição para liberar recursos
-                setTimeout(() => { splash.style.display = 'none'; }, 1000); 
-            }, 3000); // 3 segundos antes de começar a sumir
-
-            // ==================== LÓGICA DO LIGHTBOX ====================
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const images = document.querySelectorAll('.galeria img'); // Seleciona todas as imagens dentro da galeria
-
-            // Ao clicar na imagem
-            images.forEach(img => {
-                img.addEventListener('click', () => {
-                    lightboxImg.src = img.src; // Pega o caminho da imagem clicada
-                    lightbox.classList.add('active'); // Ativa o lightbox
-                });
-            });
-
-            // Ao clicar no lightbox ou pressionar ESC, ele fecha
-            lightbox.addEventListener('click', () => {
-                lightbox.classList.remove('active');
-            });
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') lightbox.classList.remove('active');
-            });
+                
+                // Após o fadeout, esconde o splash e mostra o conteúdo principal
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    mainContent.classList.add('visible');
+                }, fadeTime);
+                
+            }, delayTime);
         });
+
+        // 2. Lógica do Lightbox (Zoom de Foto)
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.close-btn');
+
+        // Adiciona evento de clique em todas as imagens da galeria
+        document.querySelectorAll('.galeria figure img').forEach(img => {
+            img.onclick = function() {
+                lightbox.style.display = 'block';
+                lightboxImg.src = this.src;
+                
+                // Pega a legenda da tag <figcaption> no elemento <figure> pai
+                const figcaption = this.closest('figure').querySelector('figcaption');
+                lightboxCaption.innerHTML = figcaption ? figcaption.innerHTML : '';
+            }
+        });
+
+        // Fecha o lightbox ao clicar no 'x'
+        closeBtn.onclick = function() {
+            lightbox.style.display = 'none';
+        }
+
+        // Fecha o lightbox ao clicar fora da imagem
+        lightbox.onclick = function(event) {
+            if (event.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
