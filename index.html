@@ -1,435 +1,423 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lembranças da Alessandra 18 anos de Vida</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembranças da Alessandra 18 anos de Vida</title>
 
-    <style>
-        /* ========================================= */
-        /* SPLASH SCREEN STYLES (Início) */
-        /* ========================================= */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 5s ease-out, visibility 5s ease-out;
-            visibility: visible;
-            /* Mantém o fundo escuro para o efeito de fade-out */
-            background-color: #000000;
-            background-image: url('campo.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    <style>
+        /* ========================================= */
+        /* SPLASH SCREEN STYLES (Início) */
+        /* ========================================= */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 5s ease-out, visibility 5s ease-out;
+            visibility: visible;
+            background-color: #000000;
+            background-image: url('campo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .splash-title {
-            color: Black;
-            font-family: 'Honk', sans-serif; /* Preservando a fonte original do splash */
-            font-size: 2em;
-            text-align: center;
-            background-color: rgb(255, 255, 255);
-            padding: 10px 20px;
-            border-radius: 8px;
-            line-height: 1.2;
-        }
+        .splash-title {
+            color: Black;
+            font-family: 'Honk', sans-serif; /* Preservando a fonte original do splash */
+            font-size: 2em;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border-radius: 8px;
+            line-height: 1.2;
+        }
 
-        .hidden {
-            opacity: 0 !important;
-            visibility: hidden !important;
-        }
-        /* ========================================= */
-        /* SPLASH SCREEN STYLES (Fim) */
-        /* ========================================= */
+        .hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        /* ========================================= */
+        /* SPLASH SCREEN STYLES (Fim) */
+        /* ========================================= */
 
-        /* ========================================= */
-        /* MAIN CONTENT STYLES (Início) */
-        /* ========================================= */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            
-            /* NOVO: Aplica a imagem de fundo no body para o efeito glassmorphism funcionar */
-            background-image: url('campo.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Fixa o fundo para o efeito ser melhor ao rolar */
+        /* ========================================= */
+        /* MAIN CONTENT STYLES (Início) */
+        /* ========================================= */
+        body {
+            /* Definindo uma fonte base, mas as tags <p> terão a fonte específica abaixo */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1d214b;
+            color: #000000;
+            line-height: 1.6;
+        }
 
-            color: #000000;
-            line-height: 1.6;
-        }
+        /* Aplica a fonte solicitada (Georgia/serif) para todos os parágrafos e legendas */
+        p, figcaption {
+            font-family: 'Georgia', serif !important;
+            color: #000000;
+        }
 
-        /* Aplica a fonte solicitada (Georgia/serif) para todos os parágrafos e legendas */
-        p, figcaption {
-            font-family: 'Georgia', serif !important;
-            color: #000000;
-        }
+        /* Mantém as fontes dos títulos no padrão original (Arial/sans-serif) */
+        h1, h2 {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilo do H1 principal (Lembranças da Alessandra) */
+        h1 {
+            color: #007bff;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            text-align: center;
+        }
 
-        /* Mantém as fontes dos títulos no padrão original (Arial/sans-serif) */
-        h1, h2 {
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-        }
-        
-        /* Glassmorphism para o Container Principal */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            /* NOVO: Efeito Glass */
-            background-color: rgba(255, 255, 255, 0.85); /* Fundo branco com alta opacidade */
-            backdrop-filter: blur(10px); /* O desfoque do vidro */
-            
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Estilo do H1 principal (Lembranças da Alessandra) */
-        h1 {
-            color: #007bff;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            text-align: center;
-        }
+        .secao {
+            margin-top: 25px;
+            padding: 15px 0;
+        }
 
-        .secao {
-            margin-top: 25px;
-            padding: 15px 0;
-        }
+        h2 {
+            color: #c71d1d;
+            margin-bottom: 10px;
+        }
 
-        h2 {
-            color: #c71d1d;
-            margin-bottom: 10px;
-        }
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+        }
 
-        .galeria {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 15px;
-        }
+        .galeria img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-        .galeria img {
-            width: 100%;
-            max-width: 250px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+        .texto-destaque {
+            background-color: #ddddddcc;
+            padding: 15px;
+            border-left: 5px solid #ff0707;
+            border-right: 5px solid #ff0707;
+            margin-top: 20px;
+        }
+        
+        /* Estilo para a primeira tela de boas-vindas */
+        .welcome-container {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .welcome-container h1 {
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
 
-        /* Glassmorphism para a caixa de destaque (Texto Destaque) */
-        .texto-destaque {
-            /* NOVO: Efeito Glass */
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            
-            padding: 15px;
-            border-left: 5px solid #ff0707;
-            border-right: 5px solid #ff0707;
-            margin-top: 20px;
-        }
-        
-        /* Glassmorphism para a primeira tela de boas-vindas */
-        .welcome-container {
-            /* NOVO: Efeito Glass */
-            background-color: rgba(255, 255, 255, 0.85); /* Fundo branco com alta opacidade */
-            backdrop-filter: blur(10px); /* O desfoque do vidro */
-            
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            max-width: 80%;
-            margin: 20px auto;
-            text-align: center;
-        }
-        .welcome-container h1 {
-            color: #ff0000;
-            margin-bottom: 10px;
-        }
+        /* ========================================= */
+        /* ANIMAÇÃO DOS LINKS (Mover) */
+        /* ========================================= */
+        @keyframes mover-direita {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
 
-        /* ========================================= */
-        /* ANIMAÇÃO DOS LINKS (Mover) */
-        /* ========================================= */
-        @keyframes mover-direita {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(10px); }
-            100% { transform: translateX(0); }
-        }
+        @keyframes mover-esquerda {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
 
-        @keyframes mover-esquerda {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-10px); }
-            100% { transform: translateX(0); }
-        }
-
-        .titulo-animado-direita {
-            animation: mover-direita 1.0s infinite alternate;
-            display: inline-block;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-        
-        .titulo-animado-esquerda {
-            animation: mover-esquerda 1.0s infinite alternate;
-            display: inline-block;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-        /* ========================================= */
-        /* MAIN CONTENT STYLES (Fim) */
-        /* ========================================= */
-    </style>
+        .titulo-animado-direita {
+            animation: mover-direita 1.0s infinite alternate;
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .titulo-animado-esquerda {
+            animation: mover-esquerda 1.0s infinite alternate;
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        /* ========================================= */
+        /* MAIN CONTENT STYLES (Fim) */
+        /* ========================================= */
+    </style>
 </head>
 <body>
 
-    <div id="splash-screen">
-        <h1 class="splash-title">Feliz Aniversário​🥳</h1>
-    </div>
+    <div id="splash-screen">
+        <h1 class="splash-title">Feliz Aniversário​🥳</h1>
+    </div>
 
-    <div id="main-content">
-        
-        <div class="welcome-container">
-            <h1>Bem-vindo!</h1>
-            <p>Parabéns Amor 18 Anos!</p>
-            <p>Aqui está algumas coisas que tenho certeza que serão inesquecíveis. 💭​😉​</p>
-        </div>
+    <div id="main-content">
+        
+        <div class="welcome-container">
+            <h1>Bem-vindo!</h1>
+            <p>Parabéns Amor 18 Anos!</p>
+            <p>Aqui está algumas coisas que tenho certeza que serão inesquecíveis. 💭​😉​</p>
+        </div>
 
-        <div class="container">
-            <h1>Lembranças da Alessandra 18 anos de Vida</h1>
-            
-            <p class="texto-destaque">
-                Bom aqui esta a página de lembranças, O destino será momentos que marcaram
-                e Textos com muitos sentimentos....
-            </p>
+        <div class="container">
+            <h1>Lembranças da Alessandra 18 anos de Vida</h1>
+            
+            <p class="texto-destaque">
+                Bom aqui esta a página de lembranças, O destino será momentos que marcaram
+                e Textos com muitos sentimentos....
+            </p>
 
-            <div class="secao">
-                <h2> Oque ela significa para você, ela é tudo pra mim </h2>
-                <div class="galeria">
-                    <figure>
-                        <img src="bety.jpg.JPG" alt="Beijo">
-                        <figcaption>Te Amo Filha😘</figcaption>
-                        <div class="container" style="padding: 10px 0; box-shadow: none; max-width: 100%;">
-                            <p>Dona Bety♡</p>
-                            <p>Você é minha querida filha, Minha companheira de todas as horas.💖</p>
-                        </div>
-                        <p style="text-align: justify; margin-top: 10px;">
-                            Parabéns Dory, você realize todos seus sonhos e continue sendo uma mulher incrível
-                            igual você é, saiba que Eu te amo muito sempre que precisar estarei aqui para oque der e vier, Eu e Você para sempre.💘​
-                        </p>
-                    </figure>
-                </div>
-            </div>
+            <div class="secao">
+                <h2> Oque ela significa para você, ela é tudo pra mim </h2>
+                <div class="galeria">
+                    <figure>
+                        <img src="bety.jpg.JPG" alt="Beijo">
+                        <figcaption>Te Amo Filha😘</figcaption>
+                        <div class="container" style="padding: 10px 0; box-shadow: none; max-width: 100%;">
+                            <p>Dona Bety♡</p>
+                            <p>Você é minha querida filha, Minha companheira de todas as horas.💖</p>
+                        </div>
+                        <p style="text-align: justify; margin-top: 10px;">
+                            Parabéns Dory, você realize todos seus sonhos e continue sendo uma mulher incrível
+                            igual você é, saiba que Eu te amo muito sempre que precisar estarei aqui para oque der e vier, Eu e Você para sempre.💘​
+                        </p>
+                    </figure>
+                </div>
+            </div>
 
-            <div class="secao">
-                <h2>Galeria de Mometos</h2>
-                <div class="galeria">
-                    <figure>
-                        <img src="pescaria.jpg.JPG" alt="Pescando Juntos">
-                        <figcaption>Primeira Pesca Juntos</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="momentos.jpg" alt="Eu Te Amo">
-                        <figcaption>Momentos especiais Eu Te Amo</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="cinema.jpg.JPG" alt="Nosso Passeio">
-                        <figcaption>Primeira vez saindo juntos</figcaption>
-                        <figcaption>Primeira vez juntos no cinema</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="frase.jpg.JPG" alt="Um lindo Momento Juntos">
-                        <figcaption>Eu te amo♥️</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Beijo.jpg.JPG" alt="HeHeHeHeHeHeHeHeHe">
-                        <figcaption>Aquela foto marcante</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="muitxo.jpg.JPG" alt="EU e Voce">
-                        <figcaption>HaHaHaHaHaHaHaHaHa</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="filinha.jpg.PNG" alt="Filha">
-                        <figcaption>Filha♥️</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="betyele.jpg.PNG" alt="😍😍">
-                        <figcaption>TE AMO Lê😍</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="engracado.jpg.JPG" alt="HAHAHAHA">
-                        <figcaption>Engraçadinha</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Beleza.JPG" alt="LINDAA">
-                        <figcaption>È Lindaa É Muitxo Linda</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Bigodinho.JPG" alt=".">
-                        <figcaption>Bigodinho</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Empé.PNG" alt=".">
-                        <figcaption>Mocinha🙃</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="rosto.JPG" alt=".">
-                        <figcaption>🙃</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Pé.PNG" alt=".">
-                        <figcaption>💞​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Familia.PNG" alt=".">
-                        <figcaption>Family​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="irmao.JPG" alt=".">
-                        <figcaption>Irmão​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="BoloRosa.PNG" alt=".">
-                        <figcaption>Festinha com seu Bolo Rosa</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Prézinho.PNG" alt=".">
-                        <figcaption>Brother​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="bebezinha.JPG" alt=".">
-                        <figcaption>Bebê​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Vestidinho.JPG" alt=".">
-                        <figcaption>Niver​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Primeiro.JPG" alt=".">
-                        <figcaption>Inesquecível​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="escolinha.JPG" alt=".">
-                        <figcaption>Sempre Inteligente</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Lindos.jpg" alt=".">
-                        <figcaption>Dia Lindo, Foto Linda​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="maeefilha.jpg.PNG" alt=".">
-                        <figcaption>Parabéns Minha Filha</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="sorrindo.jpg.JPG" alt=".">
-                        <figcaption>Oh Sorriso mais encantador!​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="bonita.jpg.JPG" alt=".">
-                        <figcaption>Mdss 😻​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Muie.JPG" alt=".">
-                        <figcaption>Eitxa o Olhar dela ☺️​😍​​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Vermelho.JPG" alt=".">
-                        <figcaption>Até que Arrumadinha😎​</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Emanuel.JPG" alt=".">
-                        <figcaption>​My brother</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="sim.JPG" alt=".">
-                        <figcaption>Hipnotizantezante a mulher que eu Tenho!</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Photo.png" alt=".">
-                        <figcaption>Fotos com muitos sentimentos</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="MeuAniversario.JPG" alt=".">
-                        <figcaption>Primeiro Aniversário juntos!</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Lupa.png" alt=".">
-                        <figcaption>Somos....</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="Você.JPG" alt=".">
-                        <figcaption>Essa é você! HeHeHeHe</figcaption>
-                    </figure>
-                </div>
-            </div>
+            <div class="secao">
+                <h2>Galeria de Mometos</h2>
+                <div class="galeria">
+                    <figure>
+                        <img src="pescaria.jpg.JPG" alt="Pescando Juntos">
+                        <figcaption>Primeira Pesca Juntos</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="momentos.jpg" alt="Eu Te Amo">
+                        <figcaption>Momentos especiais Eu Te Amo</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="cinema.jpg.JPG" alt="Nosso Passeio">
+                        <figcaption>Primeira vez saindo juntos</figcaption>
+                        <figcaption>Primeira vez juntos no cinema</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="frase.jpg.JPG" alt="Um lindo Momento Juntos">
+                        <figcaption>Eu te amo♥️</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Beijo.jpg.JPG" alt="HeHeHeHeHeHeHeHeHe">
+                        <figcaption>Aquela foto marcante</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="muitxo.jpg.JPG" alt="EU e Voce">
+                        <figcaption>HaHaHaHaHaHaHaHaHa</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="filinha.jpg.PNG" alt="Filha">
+                        <figcaption>Filha♥️</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="betyele.jpg.PNG" alt="😍😍">
+                        <figcaption>TE AMO Lê😍</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="engracado.jpg.JPG" alt="HAHAHAHA">
+                        <figcaption>Engraçadinha</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Beleza.JPG" alt="LINDAA">
+                        <figcaption>È Lindaa É Muitxo Linda</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Bigodinho.JPG" alt=".">
+                        <figcaption>Bigodinho</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Empé.PNG" alt=".">
+                        <figcaption>Mocinha🙃</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="rosto.JPG" alt=".">
+                        <figcaption>🙃</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Pé.PNG" alt=".">
+                        <figcaption>💞​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Familia.PNG" alt=".">
+                        <figcaption>Family​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="irmao.JPG" alt=".">
+                        <figcaption>Irmão​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="BoloRosa.PNG" alt=".">
+                        <figcaption>Festinha com seu Bolo Rosa</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Prézinho.PNG" alt=".">
+                        <figcaption>Brother​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="bebezinha.JPG" alt=".">
+                        <figcaption>Bebê​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Vestidinho.JPG" alt=".">
+                        <figcaption>Niver​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Primeiro.JPG" alt=".">
+                        <figcaption>Inesquecível​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="escolinha.JPG" alt=".">
+                        <figcaption>Sempre Inteligente</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Lindos.jpg" alt=".">
+                        <figcaption>Dia Lindo, Foto Linda​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="maeefilha.jpg.PNG" alt=".">
+                        <figcaption>Parabéns Minha Filha</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="sorrindo.jpg.JPG" alt=".">
+                        <figcaption>Oh Sorriso mais encantador!​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="bonita.jpg.JPG" alt=".">
+                        <figcaption>Mdss 😻​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Muie.JPG" alt=".">
+                        <figcaption>Eitxa o Olhar dela ☺️​😍​​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Vermelho.JPG" alt=".">
+                        <figcaption>Até que Arrumadinha😎​</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Emanuel.JPG" alt=".">
+                        <figcaption>​My brother</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="sim.JPG" alt=".">
+                        <figcaption>Hipnotizantezante a mulher que eu Tenho!</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Photo.png" alt=".">
+                        <figcaption>Fotos com muitos sentimentos</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="MeuAniversario.JPG" alt=".">
+                        <figcaption>Primeiro Aniversário juntos!</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Lupa.png" alt=".">
+                        <figcaption>Somos....</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Você.JPG" alt=".">
+                        <figcaption>Essa é você! HeHeHeHe</figcaption>
+                    </figure>
+                </div>
+            </div>
 
-            <p style="margin-top: 100px; text-align: center;">
-                Momentos tão especiais e marcantes com pessoas mais que importantes🥰
-            </p>
+            <p style="margin-top: 100px; text-align: center;">
+                Momentos tão especiais e marcantes com pessoas mais que importantes🥰
+            </p>
 
-            <div class="secao">
-                <h2>Carta Aberta</h2>
-                <p>Mãe para Lê</p>
-                <audio controls>
-                    <source src="AudioBety.m4a" type="audio/mpeg">
-                    <source src="AudioBety.mp3" type="audio/ogg">
-                    Seu navegador não suporta o elemento de áudio.
-                </audio>
-                <p>
-                    Hoje é seu aniversário minha filha uma data especial não apenas para você mas também para mim pois recordo um dos momentos mais felizes da minha vida você chegou ao meus braços depois de ter compartilhado existências no meu corpo e no meu coração nasceu um amor que é tão grande Tão imenso que não existe comparação possível com nada feliz aniversário meu amor​
-                </p>
-                <p>
-                    Feliz Aniversário Alessandra 18 anos sendo a luz e o sentido de nossas Vidas!
-                </p>
-            </div>
+            <div class="secao">
+                <h2>Carta Aberta</h2>
+                <p>Mãe para Lê</p>
+                <audio controls>
+                    <source src="AudioBety.m4a" type="audio/mpeg">
+                    <source src="AudioBety.mp3" type="audio/ogg">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+                <p>
+                    Hoje é seu aniversário minha filha uma data especial não apenas para você mas também para mim pois recordo um dos momentos mais felizes da minha vida você chegou ao meus braços depois de ter compartilhado existências no meu corpo e no meu coração nasceu um amor que é tão grande Tão imenso que não existe comparação possível com nada feliz aniversário meu amor​
+                </p>
+                <p>
+                    Feliz Aniversário Alessandra 18 anos sendo a luz e o sentido de nossas Vidas!
+                </p>
+            </div>
 
-            <div class="secao">
-                <h2>Hailton para Sandra</h2>
-                <p>
-                    Filha você é muito Importante para mim, Deus Abençoe você filha sempre estarei aqui com você, conte comigo para tudo eu sempre vou estar aqui Sandra.
-                </p>
-            </div>
-            
-            <h1 style="text-align: center;">
-                <a href="https://fãdegreysanatomy.my.canva.site/"
-                   target="_blank"
-                   class="titulo-animado-direita">
-                    Parabéns Dory🤍️
-                </a>
-            </h1>
+            <div class="secao">
+                <h2>Hailton para Sandra</h2>
+                <p>
+                    Filha você é muito Importante para mim, Deus Abençoe você filha sempre estarei aqui com você, conte comigo para tudo eu sempre vou estar aqui Sandra.
+                </p>
+            </div>
+            
+            <h1 style="text-align: center;">
+                <a href="https://fãdegreysanatomy.my.canva.site/"
+                   target="_blank"
+                   class="titulo-animado-direita">
+                    Parabéns Dory🤍️
+                </a>
+            </h1>
 
-            <h1 style="text-align: center;">
-                <a href="https://youtu.be/_gGI0N11lzw?si=WA5C5Nb8Winv-ND7"
-                   target="_blank"
-                   class="titulo-animado-esquerda">
-                    Aqui está seu Vídeo❤️
-                </a>
-            </h1>
+            <h1 style="text-align: center;">
+                <a href="https://youtu.be/_gGI0N11lzw?si=WA5C5Nb8Winv-ND7"
+                   target="_blank"
+                   class="titulo-animado-esquerda">
+                    Aqui está seu Vídeo❤️
+                </a>
+            </h1>
 
-        </div>
-    </div>
+        </div>
+    </div>
 
-    <script>
-        // Oculta o splash screen após um tempo
-        document.addEventListener('DOMContentLoaded', () => {
-            const splash = document.getElementById('splash-screen');
-            const delayTime = 3000; // 3 segundos
+    <script>
+        // Oculta o splash screen após um tempo
+        document.addEventListener('DOMContentLoaded', () => {
+            const splash = document.getElementById('splash-screen');
+            const delayTime = 3000; // 3 segundos
 
-            setTimeout(() => {
-                splash.classList.add('hidden');
-            }, delayTime);
-        });
-    </script>
+            setTimeout(() => {
+                splash.classList.add('hidden');
+                
+                // Remove o display 'none' para evitar problemas em alguns navegadores
+                setTimeout(() => {
+                    // Não é estritamente necessário, mas garante que o splash não interfira após a transição
+                }, 1000); // 1s é o tempo da transição (conforme o CSS)
+            }, delayTime);
+        });
+    </script>
 </body>
 </html>
