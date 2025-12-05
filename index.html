@@ -3,553 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lembranças da Alessandra 18 anos de Vida</title>
+    <title>Para Alessandra, com Amor - 18 Anos</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
-    
+    <link rel="preload" as="image" href="campo.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+
     <style>
-        /* ========================================= */
-        /* VARIÁVEIS DE CORES E FONTES */
-        /* ========================================= */
+        /* ================= VARIAVEIS E CORES ================= */
         :root {
-            --cor-principal: #c71d1d; /* Vermelho */
-            --cor-fundo-claro: #f0f0f0;
-            --cor-texto-fundo-claro: #333;
-            --font-titulo: 'Sacramento', cursive;
-            --font-destaque: 'Dancing Script', cursive;
-            --font-corpo: 'Arial', sans-serif;
+            /* Fundo misturando Azul Profundo e Vermelho Escuro */
+            --cor-fundo-azul: #0a192f; 
+            --cor-fundo-vermelho: #3a0000;
+            
+            --cor-titulos: #d60000; /* Vermelho vivo para os títulos */
+            --cor-texto: #333333;   /* Cinza escuro para leitura */
+            --cor-bg-container: #ffffff;
+            --fonte-romantica: 'Dancing Script', cursive;
+            --fonte-elegante: 'Playfair Display', serif;
+            --fonte-texto: 'Arial', sans-serif; /* Arial solicitada */
         }
 
-        /* ========================================= */
-        /* ESTILOS GERAIS (Melhoria UI/UX) */
-        /* ========================================= */
         body {
-            font-family: var(--font-corpo);
+            /* Texto geral em Arial */
+            font-family: var(--fonte-texto); 
             margin: 0;
             padding: 0;
-            color: var(--cor-texto-fundo-claro);
+            /* Degradê do Azul para o Vermelho */
+            background: linear-gradient(135deg, var(--cor-fundo-azul) 0%, var(--cor-fundo-vermelho) 100%);
+            background-attachment: fixed; /* O fundo fica fixo enquanto rola */
+            color: var(--cor-texto);
             line-height: 1.6;
-            
-            /* Fundo Gradiente Suave */
-            background: linear-gradient(135deg, #fce6e6 0%, #ffffff 50%, #e6f7ff 100%);
-            background-attachment: fixed;
+            overflow-x: hidden;
         }
-        
-        /* Borda Decorativa e Estilo do Container */
+
+        /* ================= SPLASH SCREEN ================= */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 9999;
+            background-color: #000;
+            /* Mistura azul escuro com a imagem */
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(58, 0, 0, 0.6)), url('campo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .splash-title {
+            color: #fff; /* Branco no splash para contraste */
+            font-family: var(--fonte-romantica);
+            font-size: clamp(3em, 8vw, 5em);
+            text-align: center;
+            text-shadow: 0 0 20px rgba(214, 0, 0, 0.8); /* Brilho vermelho */
+            padding: 20px;
+            animation: pulseTitle 2s infinite;
+        }
+
+        @keyframes pulseTitle {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* ================= CONTEÚDO PRINCIPAL ================= */
         .container {
             max-width: 900px;
             margin: 40px auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 2px solid var(--cor-principal); /* Borda Externa Suave */
-            box-sizing: border-box; /* Para padding e borda não aumentarem o tamanho */
+            background-color: var(--cor-bg-container);
+            padding: 40px;
+            border-radius: 20px;
+            /* Sombra azulada suave */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
         }
 
+        /* Borda superior decorativa vermelha */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 8px;
+            background: linear-gradient(90deg, #0a192f, #d60000);
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* TÍTULOS - Todos em Vermelho e Românticos */
         h1 {
-            font-family: var(--font-titulo);
-            font-size: 3.5em; /* Fonte Romântica no Título Principal */
-            color: var(--cor-principal);
+            font-family: var(--fonte-romantica);
+            color: var(--cor-titulos);
+            font-size: 3em;
             text-align: center;
-            padding-bottom: 15px;
             margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
         }
 
         h2 {
-            font-family: var(--font-titulo);
-            font-size: 2.2em; /* Fonte Romântica nos Subtítulos */
-            color: var(--cor-principal);
+            font-family: var(--fonte-romantica); /* Mantendo romântico */
+            color: var(--cor-titulos);
             margin-bottom: 15px;
             text-align: center;
+            font-size: 2.2em;
         }
 
-        .secao {
-            margin-top: 30px;
-            padding: 20px 0;
-            border-bottom: 1px dashed #ddd; /* Separador suave */
-        }
-        .secao:last-of-type {
-            border-bottom: none;
+        /* TEXTOS - Arial (Padrão) */
+        p {
+            font-family: var(--fonte-texto); /* Arial */
+            font-size: 1.1em;
+            margin-bottom: 15px;
         }
 
-        /* Aplicação da fonte romântica na legenda das fotos (figcaption) */
-        figcaption {
-            font-family: var(--font-destaque);
-            font-size: 1.3em;
-            color: var(--cor-principal);
-            margin-top: 5px;
-            text-align: center;
-        }
-        
-        /* Estilo do Texto de Destaque */
         .texto-destaque {
-            font-family: var(--font-destaque);
-            font-size: 1.2em;
-            background-color: var(--cor-fundo-claro);
-            padding: 20px;
-            border-left: 8px solid var(--cor-principal);
-            border-right: 8px solid var(--cor-principal);
-            margin-top: 20px;
+            background: #fdf2f2; /* Fundo avermelhado muito claro */
+            padding: 25px;
+            border-left: 5px solid var(--cor-titulos);
+            border-right: 5px solid var(--cor-titulos);
+            margin: 30px 0;
             text-align: center;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         
-        /* Estilo da Seção de Áudio e Texto */
-        audio {
-            width: 100%;
-            max-width: 400px;
-            margin: 15px auto;
-            display: block;
-        }
-        .secao p {
-             text-align: justify;
-        }
-
-
-        /* ========================================= */
-        /* ANIMAÇÃO DE TÍTULO/TEXTO (Revisada) */
-        /* ========================================= */
-        @keyframes mover-direita {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(8px); }
-            100% { transform: translateX(0); }
-        }
-        
-        @keyframes mover-esquerda {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-8px); }
-            100% { transform: translateX(0); }
-        }
-
-        .titulo-animado.dir {
-            animation: mover-direita 1.0s infinite alternate;
-        }
-        .titulo-animado.esq {
-            animation: mover-esquerda 1.0s infinite alternate;
-        }
-
-        .titulo-animado {
-            display: inline-block;
-            text-decoration: none;
-            color: var(--cor-principal);
+        /* Frases de destaque dentro do box podem ser levemente maiores */
+        .texto-destaque p {
             font-weight: bold;
-            font-size: 1.5em;
-            margin: 15px 10px;
-            padding: 10px 20px;
-            border: 2px solid var(--cor-principal);
-            border-radius: 50px;
-            transition: background-color 0.3s;
-            font-family: var(--font-destaque);
-        }
-        .titulo-animado:hover {
-            background-color: rgba(var(--cor-principal), 0.1);
+            color: #555;
         }
 
-
-        /* ========================================= */
-        /* GALERIA E LIGHTBOX (Zoom de Foto) */
-        /* ========================================= */
+        /* ================= GALERIA ================= */
         .galeria {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
-        
+
         .galeria figure {
             margin: 0;
-            cursor: pointer;
             width: 100%;
             max-width: 250px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            background: #fff;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+            border: 1px solid #eee;
         }
+
         .galeria figure:hover {
-            transform: scale(1.03);
+            transform: translateY(-5px);
+            border-color: var(--cor-titulos); /* Borda fica vermelha ao passar o mouse */
         }
-        
+
         .galeria img {
             width: 100%;
             height: auto;
+            border-radius: 8px;
+            aspect-ratio: 3/4; 
+            object-fit: cover;
             display: block;
         }
 
-        /* Lightbox CSS */
-        .lightbox {
-            display: none;
+        /* LEGENDA - Exceção: Fonte Romântica e Vermelha */
+        figcaption {
+            margin-top: 10px;
+            font-family: var(--fonte-romantica);
+            font-size: 1.4em;
+            color: var(--cor-titulos);
+            font-weight: normal;
+        }
+
+        /* ================= BOTÃO ANIMADO ================= */
+        .btn-final {
+            display: block;
+            text-align: center;
+            margin: 50px auto 20px;
+            background: linear-gradient(45deg, #d60000, #ff4d4d);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: var(--fonte-texto); /* Texto do botão em Arial para leitura */
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 10px 25px rgba(214, 0, 0, 0.4);
+            /* Animação aplicada */
+            animation: heartbeatBtn 1.5s infinite; 
+            transition: all 0.3s ease;
+        }
+
+        /* Animação de Pulsar (Coração) */
+        @keyframes heartbeatBtn {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 0, 0, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(214, 0, 0, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 0, 0, 0); }
+        }
+
+        .btn-final:hover {
+            animation: none; /* Para a animação ao passar o mouse para clicar */
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #b00000, #e60000);
+        }
+
+        /* ================= LIGHTBOX ================= */
+        #lightbox {
             position: fixed;
             z-index: 10000;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .lightbox-content {
-            margin: auto;
-            display: block;
-            width: 90%;
-            max-width: 700px;
-            border-radius: 10px;
-        }
-
-        @keyframes zoom {
-            from {transform: scale(0)}
-            to {transform: scale(1)}
-        }
-        .lightbox-content {
-            animation-name: zoom;
-            animation-duration: 0.6s;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .close-btn:hover, .close-btn:focus {
-            color: #bbb;
-            text-decoration: none;
-        }
-        
-        /* ========================================= */
-        /* SPLASH SCREEN (Glassmorphism Aplicado) */
-        /* ========================================= */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 2s ease-out, visibility 2s ease-out; 
-            visibility: visible;
-            
-            /* Fundo com imagem do usuário */
-            background-color: #000000;
-            background-image: url('campo.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(10, 25, 47, 0.95); /* Fundo azul escuro */
             display: flex;
-            align-items: center;
             justify-content: center;
-            backdrop-filter: blur(2px); /* Desfoque suave no fundo geral */
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
         }
 
-        .splash-title {
-            color: white;
-            font-family: var(--font-titulo);
-            font-size: 4em;
-            text-align: center;
-            padding: 20px 30px;
-            border-radius: 15px;
-            line-height: 1.2;
-            
-            /* Efeito Glass Fosco (Glassmorphism) */
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(8px); 
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+        #lightbox.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .hidden {
-            opacity: 0 !important;
-            visibility: hidden !important;
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            border: 2px solid #fff;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .container {
-                margin: 20px;
-                padding: 20px;
-                max-width: 95%;
-            }
+        #lightbox.active img { transform: scale(1); }
+
+        .hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .container { padding: 20px; margin: 15px; }
             h1 { font-size: 2.5em; }
             h2 { font-size: 1.8em; }
-            .splash-title { font-size: 3em; }
-            .titulo-animado { font-size: 1.1em; padding: 8px 15px; }
+            figcaption { font-size: 1.2em; }
         }
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
-        <h1 class="splash-title">Feliz Aniversário​🥳</h1>
+        <h1 class="splash-title">Feliz Aniversário​ ❤️</h1>
     </div>
 
-    <div id="myLightbox" class="lightbox">
-        <span class="close-btn">&times;</span>
-        <img class="lightbox-content" id="img01">
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="Zoom">
     </div>
 
     <div class="container">
+        <h1>Lembranças da Alessandra 18 anos</h1>
         
-        <h1>Lembranças da Alessandra 18 anos de Vida</h1>
-        
-        <p class="texto-destaque">
-            Bom, aqui está a página de lembranças. O destino será momentos que marcaram e textos com muitos sentimentos....
-        </p>
-        
+        <div class="texto-destaque">
+            <p>Parabéns Amor, 18 Anos!</p>
+            <p>Aqui estão algumas coisas que tenho certeza que serão inesquecíveis. 💭​😉​</p>
+            <p>Esta é a página de lembranças. O destino será momentos que marcaram e textos com muitos sentimentos...</p>
+        </div>
+
         <div class="secao">
-            <h2> O que ela significa para você? Ela é tudo para mim </h2>
+            <h2>O que ela significa para você? Ela é tudo pra mim.</h2>
+            
             <div class="galeria">
-                <figure onclick="openLightbox(this)">
-                    <img src="bety.jpg.JPG" alt="Beijo">
-                    <figcaption>Te Amo Filha😘</figcaption>
+                <figure>
+                    <img src="bety.jpg.JPG" alt="Beijo" loading="eager" decoding="async">
+                    <figcaption>Te Amo Filha 😘</figcaption>
                 </figure>
             </div>
-            
-            <p style="text-align: center; margin-top: 15px;">Dona Bety♡</p>
-            <p style="text-align: center;">Você é minha querida filha, Minha companheira de todas as horas.💖</p>
-            
-            <p style="text-align: justify; padding: 10px 0;">
-                Parabéns Dory, que você realize todos os seus sonhos e continue sendo uma mulher incrível igual você é. Saiba que Eu te amo muito e sempre que precisar estarei aqui para o que der e vier, Eu e Você para sempre.💘​
-            </p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <p style="font-weight: bold; font-size: 1.2em;">Dona Bety ♡</p>
+                <p>Você é minha querida filha, Minha companheira de todas as horas. 💖</p>
+                <p>Parabéns Dory, que você realize todos seus sonhos e continue sendo essa mulher incrível. Saiba que Eu te amo muito, sempre que precisar estarei aqui. Eu e Você para sempre. 💘​</p>
+            </div>
         </div>
-        
+
         <div class="secao">
             <h2>Galeria de Momentos</h2>
             <div class="galeria">
-                <figure onclick="openLightbox(this)">
-                    <img src="pescaria.jpg.JPG" alt="Pescando Juntos">
+                <figure>
+                    <img src="pescaria.jpg.JPG" alt="Pescando Juntos" loading="lazy" decoding="async">
                     <figcaption>Primeira Pesca Juntos</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="momentos.jpg" alt="Eu Te Amo">
-                    <figcaption>Momentos especiais Eu Te Amo</figcaption>
+                <figure>
+                    <img src="momentos.jpg" alt="Eu Te Amo" loading="lazy" decoding="async">
+                    <figcaption>Momentos especiais</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="cinema.jpg.JPG" alt="Primeira vez no cinema">
-                    <figcaption>Primeira vez juntos no cinema</figcaption>
+                <figure>
+                    <img src="cinema.jpg.JPG" alt="Nosso Passeio" loading="lazy" decoding="async">
+                    <figcaption>Primeira vez no cinema</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="frase.jpg.JPG" alt="Um lindo Momento Juntos">
-                    <figcaption>Eu te amo♥️</figcaption>
+                <figure>
+                    <img src="frase.jpg.JPG" alt="Um lindo Momento" loading="lazy" decoding="async">
+                    <figcaption>Eu te amo ♥️</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Beijo.jpg.JPG" alt="Aquela foto marcante">
+                <figure>
+                    <img src="Beijo.jpg.JPG" alt="Foto Marcante" loading="lazy" decoding="async">
                     <figcaption>Aquela foto marcante</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="muitxo.jpg.JPG" alt="EU e Voce">
-                    <figcaption>HaHaHaHaHaHaHaHaHa</figcaption>
+                <figure>
+                    <img src="muitxo.jpg.JPG" alt="Eu e Voce" loading="lazy" decoding="async">
+                    <figcaption>HaHaHaHaHa</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="filinha.jpg.PNG" alt="Filha">
-                    <figcaption>Filha♥️</figcaption>
+                <figure>
+                    <img src="filinha.jpg.PNG" alt="Filha" loading="lazy" decoding="async">
+                    <figcaption>Filha ♥️</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="betyele.jpg.PNG" alt="😍😍">
-                    <figcaption>TE AMO Lê😍</figcaption>
+                <figure>
+                    <img src="betyele.jpg.PNG" alt="Te Amo" loading="lazy" decoding="async">
+                    <figcaption>TE AMO Lê 😍</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="engracado.jpg.JPG" alt="HAHAHAHA">
-                    <figcaption>Engraçadinha</figcaption>
+                <figure>
+                    <img src="Beleza.JPG" alt="LINDAA" loading="lazy" decoding="async">
+                    <figcaption>É Muitxo Linda</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Beleza.JPG" alt="LINDAA">
-                    <figcaption>É Lindaa É Muitxo Linda</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Bigodinho.JPG" alt="Bigodinho">
+                <figure>
+                    <img src="Bigodinho.JPG" alt="Bigodinho" loading="lazy" decoding="async">
                     <figcaption>Bigodinho</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Empé.PNG" alt="Mocinha">
-                    <figcaption>Mocinha🙃</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="rosto.JPG" alt="Rosto">
-                    <figcaption>🙃</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Pé.PNG" alt="Pé">
-                    <figcaption>💞​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Familia.PNG" alt="Family">
-                    <figcaption>Family​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="irmao.JPG" alt="Irmão">
-                    <figcaption>Irmão​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="BoloRosa.PNG" alt="Festinha com seu Bolo Rosa">
-                    <figcaption>Festinha com seu Bolo Rosa</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Prézinho.PNG" alt="Brother">
-                    <figcaption>Brother​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="bebezinha.JPG" alt="Bebê">
-                    <figcaption>Bebê​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Vestidinho.JPG" alt="Niver">
-                    <figcaption>Niver​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Primeiro.JPG" alt="Inesquecível">
-                    <figcaption>Inesquecível​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="escolinha.JPG" alt="Sempre Inteligente">
-                    <figcaption>Sempre Inteligente</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Lindos.jpg" alt="Dia Lindo, Foto Linda">
-                    <figcaption>Dia Lindo, Foto Linda​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="maeefilha.jpg.PNG" alt="Parabéns Minha Filha">
-                    <figcaption>Parabéns Minha Filha</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="sorrindo.jpg.JPG" alt="Oh Sorriso mais encantador!">
-                    <figcaption>Oh Sorriso mais encantador!​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="bonita.jpg.JPG" alt="Mdss 😻​">
-                    <figcaption>Mdss 😻​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Muie.JPG" alt="Eitxa o Olhar dela">
-                    <figcaption>Eitxa o Olhar dela ☺️​😍​​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Vermelho.JPG" alt="Até que Arrumadinha">
-                    <figcaption>Até que Arrumadinha😎​</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Emanuel.JPG" alt="My brother">
+                <figure>
+                    <img src="Emanuel.JPG" alt="Irmão" loading="lazy" decoding="async">
                     <figcaption>​My brother</figcaption>
                 </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="sim.JPG" alt="Hipnotizantezante a mulher que eu Tenho!">
-                    <figcaption>Hipnotizantezante a mulher que eu Tenho!</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Photo.png" alt="Fotos com muitos sentimentos">
-                    <figcaption>Fotos com muitos sentimentos</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="MeuAniversario.JPG" alt="Primeiro Aniversário juntos!">
-                    <figcaption>Primeiro Aniversário juntos!</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Lupa.png" alt="Somos....">
-                    <figcaption>Somos....</figcaption>
-                </figure>
-                <figure onclick="openLightbox(this)">
-                    <img src="Você.JPG" alt="Essa é você! HeHeHeHe">
-                    <figcaption>Essa é você! HeHeHeHe</figcaption>
-                </figure>
-                
             </div>
-            <p style="margin-top: 40px; text-align: center; font-family: var(--font-destaque); font-size: 1.2em;">
-                Momentos tão especiais e marcantes com pessoas mais que importantes🥰
+            
+            <p style="margin-top: 50px; text-align: center; font-family: var(--fonte-romantica); font-size: 1.5em; color: var(--cor-titulos);">
+                "Momentos tão especiais e marcantes com pessoas mais que importantes" 🥰
             </p>
         </div>
-        
+
         <div class="secao">
             <h2>Carta Aberta</h2>
-            <p>Mãe para Lê</p>
-            <audio controls>
+            <p style="text-align: center; font-weight: bold;">Mãe para Lê</p>
+            
+            <audio controls style="width: 100%; max-width: 400px; display: block; margin: 15px auto;">
                 <source src="AudioBety.m4a" type="audio/mpeg">
                 <source src="AudioBety.mp3" type="audio/ogg">
-                Seu navegador não suporta o elemento de áudio.
+                Seu navegador não suporta áudio.
             </audio>
-            <p>
-                Hoje é seu aniversário minha filha, uma data especial não apenas para você, mas também para mim, pois recordo um dos momentos mais felizes da minha vida. Você chegou aos meus braços depois de ter compartilhado existência no meu corpo e no meu coração. Nasceu um amor que é tão grande, tão imenso que não existe comparação possível com nada. Feliz aniversário, meu amor.
+
+            <p style="text-align: justify; margin-top: 20px;">
+                Hoje é seu aniversário minha filha, uma data especial não apenas para você mas também para mim, pois recordo um dos momentos mais felizes da minha vida. Você chegou aos meus braços depois de ter compartilhado existências no meu corpo e no meu coração. Nasceu um amor que é tão grande, tão imenso que não existe comparação possível com nada. Feliz aniversário meu amor!
             </p>
-            <p style="font-weight: bold; text-align: center;">
+            <p style="text-align: center; font-weight: bold; color: var(--cor-titulos); margin-top: 20px;">
                 Feliz Aniversário Alessandra, 18 anos sendo a luz e o sentido de nossas Vidas!
             </p>
         </div>
-        
-        <div class="secao">
+
+        <div class="secao" style="text-align: center;">
             <h2>Hailton para Sandra</h2>
             <p>
-                Filha, você é muito importante para mim. Deus te abençoe, filha. Sempre estarei aqui com você, conte comigo para tudo. Eu sempre vou estar aqui, Sandra.
+                Filha você é muito Importante para mim, Deus Abençoe você filha. Sempre estarei aqui com você, conte comigo para tudo, eu sempre vou estar aqui Sandra.
             </p>
         </div>
-        
-        <div style="text-align: center; margin-top: 40px; padding-bottom: 20px;">
-             <a href="https://fãdegreysanatomy.my.canva.site/" 
-                target="_blank" 
-                class="titulo-animado dir">
-                Parabéns Dory🤍️
-            </a>
-            
-            <a href="https://youtu.be/_gGI0N11lzw?si=WA5C5Nb8Winv-ND7" 
-                target="_blank" 
-                class="titulo-animado esq">
-                Aqui está seu Vídeo❤️
-            </a>
-        </div>
-        
+
+        <a href="https://fãdegreysanatomy.my.canva.site/" target="_blank" class="btn-final">
+            ⚠️​➡️ Parabéns Dory 🤍 ​⬅️​⚠️​
+        </a>
     </div>
 
     <script>
-        // 1. FUNCIONALIDADE SPLASH SCREEN
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Splash Screen Logic ---
             const splash = document.getElementById('splash-screen');
-            const delayTime = 3000; // 3 segundos (Tempo que a tela aparece)
-            const fadeTime = 2000; // 2 segundos (Tempo da transição, deve coincidir com o CSS)
-
             setTimeout(() => {
+                // Adiciona a classe 'hidden' para iniciar a transição de opacidade e visibilidade
                 splash.classList.add('hidden');
-                
-                // Remove o elemento após a transição para liberar o clique
-                setTimeout(() => {
-                    splash.style.display = 'none';
-                }, fadeTime); 
-            }, delayTime);
+                // Remove o elemento completamente após o término da transição (1000ms = 1s)
+                setTimeout(() => { splash.style.display = 'none'; }, 1000);
+            }, 3000); // Exibe o splash por 3 segundos
+
+            // --- Lightbox Logic ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            // Seleciona todas as imagens dentro da galeria
+            const images = document.querySelectorAll('.galeria img');
+
+            // Adiciona evento de clique a cada imagem da galeria
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src; // Define a imagem para o lightbox
+                    lightbox.classList.add('active'); // Ativa o lightbox
+                });
+            });
+
+            // Fecha o lightbox ao clicar nele
+            lightbox.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+            });
+            
+            // Fecha o lightbox ao pressionar a tecla 'Esc'
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') lightbox.classList.remove('active');
+            });
         });
-
-        // 2. FUNCIONALIDADE LIGHTBOX (Zoom de Foto)
-        const lightbox = document.getElementById('myLightbox');
-        const lightboxImg = document.getElementById('img01');
-        const closeBtn = document.getElementsByClassName('close-btn')[0];
-
-        // Abre o Lightbox
-        function openLightbox(figureElement) {
-            const imgSrc = figureElement.querySelector('img').src;
-            lightbox.style.display = "block";
-            lightboxImg.src = imgSrc;
-        }
-
-        // Fecha o Lightbox ao clicar no 'X'
-        closeBtn.onclick = function() {
-            lightbox.style.display = "none";
-        }
-
-        // Fecha o Lightbox ao clicar fora da imagem
-        window.onclick = function(event) {
-            if (event.target == lightbox) {
-                lightbox.style.display = "none";
-            }
-        }
     </script>
 </body>
 </html>
