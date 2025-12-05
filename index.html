@@ -6,16 +6,14 @@
     <title>Lembranças da Alessandra 18 anos de Vida</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    
     <style>
-        /* ==================== VARIÁVEIS DE ESTILO ==================== */
+        /* ================= VARIAVEIS E CORES NOVAS ================= */
         :root {
-            --cor-titulos: #d60000; /* Vermelho vivo para títulos e destaques */
-            --fonte-romantica: 'Dancing Script', cursive;
-            --cor-texto-padrao: #333333;
+            --cor-titulos: #d60000; /* Vermelho vivo para os títulos e destaques */
+            --fonte-romantica: 'Dancing Script', cursive; /* Fonte para títulos e legendas */
         }
-
-        /* Estilos base (mantidos do seu código) */
+        
+        /* ================= ESTILOS JÁ EXISTENTES ================= */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -36,41 +34,35 @@
             margin-top: 25px;
             padding: 15px 0;
         }
-        
-        /* 2. ESTILO ROMÂNTICO PARA TÍTULOS */
-        h1, h2 {
-            font-family: var(--fonte-romantica);
-            color: var(--cor-titulos) !important; /* Garante que o vermelho da variável seja usado */
-            text-align: center;
-        }
-        h1 {
-            font-size: 3em;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-        h2 {
-            font-size: 2.2em;
-        }
-
-        /* Estilos de Destaque (mantidos do seu código) */
         .texto-destaque {
             background-color: #ddddddcc;
             padding: 15px;
             border-left: 5px solid #ff0707;
             border-right: 5px solid #ff0707;
             margin-top: 20px;
-            text-align: center;
         }
 
-        /* ==================== GALERIA E HOVER (MOVIMENTO) ==================== */
+        /* ================= NOVOS ESTILOS PARA FONTES ROMÂNTICAS ================= */
+        h1, h2 {
+            font-family: var(--fonte-romantica); /* ✅ Fonte romântica nos títulos */
+            color: var(--cor-titulos); /* Cor vermelha para destacar */
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        /* ================= NOVOS ESTILOS PARA GALERIA E HOVER ================= */
         .galeria {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: 15px;
         }
-
         .galeria figure {
             margin: 0;
             width: 100%;
@@ -80,14 +72,13 @@
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease; /* Transição para o movimento */
-            cursor: zoom-in; /* Cursor de zoom para indicar que é clicável */
+            transition: transform 0.3s ease; /* Transição suave para o movimento */
+            cursor: zoom-in; /* Indica que é clicável */
             border: 1px solid #eee;
         }
 
-        /* Efeito de movimento (Hover) */
         .galeria figure:hover {
-            transform: translateY(-5px); 
+            transform: translateY(-5px); /* ✅ Efeito de movimento ao passar o mouse */
             border-color: var(--cor-titulos);
         }
 
@@ -95,26 +86,27 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
-            aspect-ratio: 3/4; /* Proporção de imagem mais comum na galeria original */
+            aspect-ratio: 3/4; /* Proporção para manter o layout da galeria */
             object-fit: cover;
             display: block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Mantido do seu código original */
         }
 
-        /* 3. ESTILO ROMÂNTICO PARA LEGENDA DA FOTO */
+        /* LEGENDA - Estilo Romântico */
         figcaption {
             margin-top: 10px;
-            font-family: var(--fonte-romantica);
+            font-family: var(--fonte-romantica); /* ✅ Fonte romântica na legenda */
             font-size: 1.4em;
             color: var(--cor-titulos);
             font-weight: normal;
         }
-        
-        /* ==================== LIGHTBOX (ZOOM) ==================== */
+
+        /* ================= LIGHTBOX (ZOOM) CSS ================= */
         #lightbox {
             position: fixed;
             z-index: 10000;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.95); /* Fundo escuro */
+            background-color: rgba(10, 25, 47, 0.95); /* Fundo azul escuro semi-transparente */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -138,7 +130,7 @@
         }
 
         #lightbox.active img { transform: scale(1); }
-        /* ========================================================= */
+
     </style>
 </head>
 <body>
@@ -149,26 +141,25 @@
 
     <div class="container">
         <h1>Lembranças da Alessandra 18 anos de Vida</h1>
-        
         <p class="texto-destaque">
-            Bom aqui esta a página de lembranças, O destino será momentos que marcaram e Textos com muitos sentimentos....
+            Bom aqui esta a página de lembranças, O destino será momentos que marcaram 
+            e Textos com muitos sentimentos....
         </p>
-
+        
         <div class="secao">
-            <h2>O que ela significa para você, ela é tudo pra mim</h2>
+            <h2> Oque ela sgnifica para você, ela é tudo pra mim </h2>
             <div class="galeria">
                 <figure>
                     <img src="bety.jpg.JPG" alt="Beijo">
                     <figcaption>Te Amo Filha😘</figcaption>
                 </figure>
             </div>
-
-            <div style="text-align: center;">
-                <p>Dona Bety♡</p>
-                <p>Você é minha querida filha, Minha companheira de todas as horas.💖</p>
-            </div>
-            <p style="text-align: justify;">
-                Parabéns Dory, você realize todos seus sonhos e continue sendo uma mulher incrível igual você é, saiba que Eu te amo muito sempre que precisar estarei aqui para oque der e vier, Eu e Você para sempre.💘​ 
+            
+            <p>Dona Bety♡</p>
+            <p>Você é minha querida filha, Minha companheira de todas as horas.💖</p>
+            <p class="text-align: justify;">
+                Parabéns Dory, você realize todos seus sonhos e continue sendo uma mulher incrível 
+                igual você é, saiba que Eu te amo muito sempre que precisar estarei aqui para oque der e vier, Eu e Você para sempre.💘​ 
             </p>
         </div>
 
@@ -185,7 +176,7 @@
                 </figure>
                 <figure>
                     <img src="cinema.jpg.JPG" alt="Nosso Passeio">
-                    <figcaption>Primeira vez no cinema</figcaption>
+                    <figcaption>Primeira vez juntos no cinema</figcaption>
                 </figure>
                 <figure>
                     <img src="frase.jpg.JPG" alt="Um lindo Momento Juntos">
@@ -213,7 +204,7 @@
                 </figure>
                 <figure>
                     <img src="Beleza.JPG" alt="LINDAA">
-                    <figcaption>É Lindaa É Muitxo Linda</figcaption>
+                    <figcaption>È Lindaa É Muitxo Linda</figcaption>
                 </figure>
                 <figure>
                     <img src="Bigodinho.JPG" alt=".">
@@ -313,8 +304,8 @@
                 </figure>
             </div>
         </div>
-        
-        <p style="margin-top: 50px; text-align: center; font-family: var(--fonte-romantica); font-size: 1.5em; color: var(--cor-titulos);">
+
+        <p style="margin-top: 100px; font-family: 'Georgia', serif; text-align: center;">
             Momentos tão especiais e marcantes com pessoas mais que importantes🥰
         </p>
 
@@ -333,51 +324,66 @@
                 Feliz Aniversário Alessandra 18 anos sendo a luz e o sentido de nossas Vidas!
             </p>
         </div>
-        
+
         <div class="secao">
             <h2>Hailton para Sandra</h2>
             <p>
                 Filha você é muito Importante para mim, Deus Abençoe você filha sempre estarei aqui com você, conte comigo para tudo eu sempre vou estar aqui Sandra.
             </p>
         </div>
-
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="https://fãdegreysanatomy.my.canva.site/" target="_blank">
+        
+        <h1 style="border: none;">
+            <a href="https://fãdegreysanatomy.my.canva.site/" target="_blank" style="display: inline-block; text-decoration: none; color: #333; font-weight: bold; animation: mover_r 1.0s infinite alternate;">
                 ⚠️​➡️ Parabéns Dory 🤍 ​⬅️​⚠️​
             </a>
-            <p style="margin-top: 10px;">
-                <a href="https://youtu.be/_gGI0N11lzw?si=WA5C5Nb8Winv-ND7" target="_blank">
-                    Aqui está seu Vídeo❤️
-                </a>
-            </p>
-        </div>
-
+        </h1>
+        <h1 style="border: none;">
+            <a href="https://youtu.be/_gGI0N11lzw?si=WA5C5Nb8Winv-ND7" target="_blank" style="display: inline-block; text-decoration: none; color: #333; font-weight: bold; animation: mover_l 1.0s infinite alternate;">
+                Aqui está seu Vídeo❤️
+            </a>
+        </h1>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Lightbox Logic (Função de Zoom) ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            // Seleciona todas as tags <img> dentro de <div class="galeria">
             const images = document.querySelectorAll('.galeria img');
 
-            // Adiciona a funcionalidade de clique
             images.forEach(img => {
                 img.addEventListener('click', () => {
-                    lightboxImg.src = img.src; // Pega o caminho da imagem clicada
-                    lightbox.classList.add('active'); // Ativa o modal/zoom
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('active');
                 });
             });
 
-            // Fecha o lightbox ao clicar fora da imagem
             lightbox.addEventListener('click', () => {
                 lightbox.classList.remove('active');
             });
             
-            // Fecha o lightbox ao pressionar a tecla 'Esc'
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') lightbox.classList.remove('active');
             });
+
+            // --- Animações dos Títulos/Botões (Em JS para evitar duplicidade de <style>) ---
+            const style = document.createElement('style');
+            style.textContent = `
+                /* Animação para o botão mover para a direita */
+                @keyframes mover_r {
+                    0% { transform: translateX(0); }
+                    50% { transform: translateX(10px); }
+                    100% { transform: translateX(0); }
+                }
+                /* Animação para o botão mover para a esquerda */
+                @keyframes mover_l {
+                    0% { transform: translateX(0); }
+                    50% { transform: translateX(-10px); }
+                    100% { transform: translateX(0); }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
