@@ -3,55 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Alessandra, com Amor - 18 Anos</title>
+    <title>Bem-vindo ao nosso QR Code!</title>
     
-    <link rel="preload" as="image" href="campo.jpg">
-
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
+    
     <style>
-        /* ================= VARIAVEIS E CORES ================= */
+        /* ==================== VARIÁVEIS DE CORES E FONTES ==================== */
         :root {
-            /* Fundo misturando Azul Profundo e Vermelho Escuro */
-            --cor-fundo-azul: #0a192f; 
-            --cor-fundo-vermelho: #3a0000;
-            
-            --cor-titulos: #d60000; /* Vermelho vivo para os títulos */
-            --cor-texto: #333333;   /* Cinza escuro para leitura */
-            --cor-bg-container: #ffffff;
+            --cor-titulos: #ff0000; /* Vermelho vivo para os títulos */
             --fonte-romantica: 'Dancing Script', cursive;
             --fonte-elegante: 'Playfair Display', serif;
-            --fonte-texto: 'Arial', sans-serif; /* Arial solicitada */
+            --cor-fundo-geral: #ff0000;
         }
 
         body {
-            /* Texto geral em Arial */
-            font-family: var(--fonte-texto); 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            /* Degradê do Azul para o Vermelho */
-            background: linear-gradient(135deg, var(--cor-fundo-azul) 0%, var(--cor-fundo-vermelho) 100%);
-            background-attachment: fixed; /* O fundo fica fixo enquanto rola */
-            color: var(--cor-texto);
-            line-height: 1.6;
+            background-color: var(--cor-fundo-geral);
+            color: #333;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
         }
-
-        /* ================= SPLASH SCREEN ================= */
+        
+        /* ==================== 2. SPLASH SCREEN (FUNDO E ANIMAÇÃO) ==================== */
         #splash-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 9999;
             background-color: #000;
-            /* Mistura azul escuro com a imagem */
-            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(58, 0, 0, 0.6)), url('campo.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: opacity 1s ease, visibility 1s ease;
+            
+            /* Fundo Escuro para contraste */
+            background: linear-gradient(135deg, #3a0000 0%, #0a192f 100%);
         }
 
         .splash-title {
@@ -59,9 +51,9 @@
             font-family: var(--fonte-romantica);
             font-size: clamp(3em, 8vw, 5em);
             text-align: center;
-            text-shadow: 0 0 20px rgba(214, 0, 0, 0.8); /* Brilho vermelho */
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* Brilho vermelho */
             padding: 20px;
-            animation: pulseTitle 2s infinite;
+            animation: pulseTitle 2s infinite; /* Aplica a animação */
         }
 
         @keyframes pulseTitle {
@@ -69,149 +61,15 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-
-        /* ================= CONTEÚDO PRINCIPAL ================= */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: var(--cor-bg-container);
-            padding: 40px;
-            border-radius: 20px;
-            /* Sombra azulada suave */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        /* Borda superior decorativa vermelha */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 8px;
-            background: linear-gradient(90deg, #0a192f, #d60000);
-            border-radius: 20px 20px 0 0;
-        }
-
-        /* TÍTULOS - Todos em Vermelho e Românticos */
-        h1 {
-            font-family: var(--fonte-romantica);
-            color: var(--cor-titulos);
-            font-size: 3em;
-            text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-
-        h2 {
-            font-family: var(--fonte-romantica); /* Mantendo romântico */
-            color: var(--cor-titulos);
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 2.2em;
-        }
-
-        /* TEXTOS - Arial (Padrão) */
-        p {
-            font-family: var(--fonte-texto); /* Arial */
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-
-        .texto-destaque {
-            background: #fdf2f2; /* Fundo avermelhado muito claro */
-            padding: 25px;
-            border-left: 5px solid var(--cor-titulos);
-            border-right: 5px solid var(--cor-titulos);
-            margin: 30px 0;
-            text-align: center;
-            border-radius: 8px;
-        }
         
-        /* Frases de destaque dentro do box podem ser levemente maiores */
-        .texto-destaque p {
-            font-weight: bold;
-            color: #555;
+        /* Classe para esconder o splash com transição */
+        .hidden { 
+            opacity: 0 !important; 
+            visibility: hidden !important; 
+            pointer-events: none; 
         }
 
-        /* ================= GALERIA ================= */
-        .galeria {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .galeria figure {
-            margin: 0;
-            width: 100%;
-            max-width: 250px;
-            background: #fff;
-            padding: 10px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-            cursor: zoom-in;
-            border: 1px solid #eee;
-        }
-
-        .galeria figure:hover {
-            transform: translateY(-5px);
-            border-color: var(--cor-titulos); /* Borda fica vermelha ao passar o mouse */
-        }
-
-        .galeria img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            aspect-ratio: 3/4; 
-            object-fit: cover;
-            display: block;
-        }
-
-        /* LEGENDA - Exceção: Fonte Romântica e Vermelha */
-        figcaption {
-            margin-top: 10px;
-            font-family: var(--fonte-romantica);
-            font-size: 1.4em;
-            color: var(--cor-titulos);
-            font-weight: normal;
-        }
-
-        /* ================= BOTÃO ANIMADO ================= */
-        .btn-final {
-            display: block;
-            text-align: center;
-            margin: 50px auto 20px;
-            background: linear-gradient(45deg, #d60000, #ff4d4d);
-            color: white;
-            padding: 20px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: var(--fonte-texto); /* Texto do botão em Arial para leitura */
-            font-weight: bold;
-            font-size: 1.2em;
-            box-shadow: 0 10px 25px rgba(214, 0, 0, 0.4);
-            /* Animação aplicada */
-            animation: heartbeatBtn 1.5s infinite; 
-            transition: all 0.3s ease;
-        }
-
-        /* Animação de Pulsar (Coração) */
-        @keyframes heartbeatBtn {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 0, 0, 0.7); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(214, 0, 0, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 0, 0, 0); }
-        }
-
-        .btn-final:hover {
-            animation: none; /* Para a animação ao passar o mouse para clicar */
-            transform: scale(1.1);
-            background: linear-gradient(45deg, #b00000, #e60000);
-        }
-
-        /* ================= LIGHTBOX ================= */
+        /* ==================== 3. LIGHTBOX (PARA ABRIR IMAGEM) ==================== */
         #lightbox {
             position: fixed;
             z-index: 10000;
@@ -234,166 +92,122 @@
             max-width: 90%;
             max-height: 90%;
             border-radius: 8px;
-            border: 2px solid #fff;
+            border: 5px solid #fff;
             transform: scale(0.9);
             transition: transform 0.3s ease;
         }
 
         #lightbox.active img { transform: scale(1); }
 
-        .hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none; }
-
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .container { padding: 20px; margin: 15px; }
-            h1 { font-size: 2.5em; }
-            h2 { font-size: 1.8em; }
-            figcaption { font-size: 1.2em; }
+        /* ==================== ESTILOS DO CONTAINER PRINCIPAL ==================== */
+        .container {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            min-width: 300px;
         }
+
+        /* TÍTULO COM FONTE ROMÂNTICA */
+        h1 {
+            font-family: var(--fonte-romantica); 
+            color: var(--cor-titulos);
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        /* ESTILO PARA AS IMAGENS CLICÁVEIS */
+        .galeria img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: zoom-in; /* Indica que é clicável */
+            transition: transform 0.2s;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.05);
+        }
+
+        .call-to-action {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .call-to-action:hover {
+            background-color: #218838;
+        }
+
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
-        <h1 class="splash-title">Feliz Aniversário​ ❤️</h1>
+        <h1 class="splash-title">Bem-vindo!</h1>
     </div>
 
     <div id="lightbox">
-        <img id="lightbox-img" src="" alt="Zoom">
+        <img id="lightbox-img" src="" alt="Zoom da imagem">
     </div>
 
     <div class="container">
-        <h1>Lembranças da Alessandra 18 anos</h1>
-        
-        <div class="texto-destaque">
-            <p>Parabéns Amor, 18 Anos!</p>
-            <p>Aqui estão algumas coisas que tenho certeza que serão inesquecíveis. 💭​😉​</p>
-            <p>Esta é a página de lembranças. O destino será momentos que marcaram e textos com muitos sentimentos...</p>
+        <h1>Bem-vindo!</h1>
+        <p>Parabéns Amor 18 Anos!</p>
+        <p>Aqui está algumas coisas que tenho certeza que serão inesquecíveis. 💭​😉​</p>
+
+        <div class="galeria">
+            <img src="bety.jpg.JPG" alt="Exemplo Foto 1">
+            <img src="pescaria.jpg.JPG" alt="Exemplo Foto 2">
+            <img src="momentos.jpg" alt="Exemplo Foto 3">
         </div>
 
-        <div class="secao">
-            <h2>O que ela significa para você? Ela é tudo pra mim.</h2>
-            
-            <div class="galeria">
-                <figure>
-                    <img src="bety.jpg.JPG" alt="Beijo" loading="eager" decoding="async">
-                    <figcaption>Te Amo Filha 😘</figcaption>
-                </figure>
-            </div>
-
-            <div style="text-align: center; margin: 30px 0;">
-                <p style="font-weight: bold; font-size: 1.2em;">Dona Bety ♡</p>
-                <p>Você é minha querida filha, Minha companheira de todas as horas. 💖</p>
-                <p>Parabéns Dory, que você realize todos seus sonhos e continue sendo essa mulher incrível. Saiba que Eu te amo muito, sempre que precisar estarei aqui. Eu e Você para sempre. 💘​</p>
-            </div>
-        </div>
-
-        <div class="secao">
-            <h2>Galeria de Momentos</h2>
-            <div class="galeria">
-                <figure>
-                    <img src="pescaria.jpg.JPG" alt="Pescando Juntos" loading="lazy" decoding="async">
-                    <figcaption>Primeira Pesca Juntos</figcaption>
-                </figure>
-                <figure>
-                    <img src="momentos.jpg" alt="Eu Te Amo" loading="lazy" decoding="async">
-                    <figcaption>Momentos especiais</figcaption>
-                </figure>
-                <figure>
-                    <img src="cinema.jpg.JPG" alt="Nosso Passeio" loading="lazy" decoding="async">
-                    <figcaption>Primeira vez no cinema</figcaption>
-                </figure>
-                <figure>
-                    <img src="frase.jpg.JPG" alt="Um lindo Momento" loading="lazy" decoding="async">
-                    <figcaption>Eu te amo ♥️</figcaption>
-                </figure>
-                <figure>
-                    <img src="Beijo.jpg.JPG" alt="Foto Marcante" loading="lazy" decoding="async">
-                    <figcaption>Aquela foto marcante</figcaption>
-                </figure>
-                <figure>
-                    <img src="muitxo.jpg.JPG" alt="Eu e Voce" loading="lazy" decoding="async">
-                    <figcaption>HaHaHaHaHa</figcaption>
-                </figure>
-                <figure>
-                    <img src="filinha.jpg.PNG" alt="Filha" loading="lazy" decoding="async">
-                    <figcaption>Filha ♥️</figcaption>
-                </figure>
-                <figure>
-                    <img src="betyele.jpg.PNG" alt="Te Amo" loading="lazy" decoding="async">
-                    <figcaption>TE AMO Lê 😍</figcaption>
-                </figure>
-                <figure>
-                    <img src="Beleza.JPG" alt="LINDAA" loading="lazy" decoding="async">
-                    <figcaption>É Muitxo Linda</figcaption>
-                </figure>
-                <figure>
-                    <img src="Bigodinho.JPG" alt="Bigodinho" loading="lazy" decoding="async">
-                    <figcaption>Bigodinho</figcaption>
-                </figure>
-                 <figure>
-                    <img src="Emanuel.JPG" alt="Irmão" loading="lazy" decoding="async">
-                    <figcaption>​My brother</figcaption>
-                </figure>
-            </div>
-            
-            <p style="margin-top: 50px; text-align: center; font-family: var(--fonte-romantica); font-size: 1.5em; color: var(--cor-titulos);">
-                "Momentos tão especiais e marcantes com pessoas mais que importantes" 🥰
-            </p>
-        </div>
-
-        <div class="secao">
-            <h2>Carta Aberta</h2>
-            <p style="text-align: center; font-weight: bold;">Mãe para Lê</p>
-            
-            <audio controls style="width: 100%; max-width: 400px; display: block; margin: 15px auto;">
-                 <source src="AudioBety.m4a" type="audio/mpeg">
-                 <source src="AudioBety.mp3" type="audio/ogg">
-                 Seu navegador não suporta áudio.
-            </audio>
-
-            <p style="text-align: justify; margin-top: 20px;">
-               Hoje é seu aniversário minha filha, uma data especial não apenas para você mas também para mim, pois recordo um dos momentos mais felizes da minha vida. Você chegou aos meus braços depois de ter compartilhado existências no meu corpo e no meu coração. Nasceu um amor que é tão grande, tão imenso que não existe comparação possível com nada. Feliz aniversário meu amor!
-            </p>
-            <p style="text-align: center; font-weight: bold; color: var(--cor-titulos); margin-top: 20px;">
-              Feliz Aniversário Alessandra, 18 anos sendo a luz e o sentido de nossas Vidas!
-            </p>
-        </div>
-
-        <div class="secao" style="text-align: center;">
-             <h2>Hailton para Sandra</h2>
-            <p>
-                Filha você é muito Importante para mim, Deus Abençoe você filha. Sempre estarei aqui com você, conte comigo para tudo, eu sempre vou estar aqui Sandra.
-            </p>
-        </div>
-
-        <a href="https://fãdegreysanatomy.my.canva.site/" target="_blank" class="btn-final">
-            ⚠️​➡️ Parabéns Dory 🤍 ​⬅️​⚠️​
+        <a href="URL_DO_SEU_LINK" target="_blank" class="call-to-action" style="margin-top: 25px;">
+            Clique Aqui para Continuar
         </a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- Splash Screen ---
+            // ==================== LÓGICA DO SPLASH SCREEN ====================
             const splash = document.getElementById('splash-screen');
             setTimeout(() => {
                 splash.classList.add('hidden');
-                setTimeout(() => { splash.style.display = 'none'; }, 1000);
-            }, 3000);
+                // Remove o elemento após a transição para liberar recursos
+                setTimeout(() => { splash.style.display = 'none'; }, 1000); 
+            }, 3000); // 3 segundos antes de começar a sumir
 
-            // --- Lightbox ---
+            // ==================== LÓGICA DO LIGHTBOX ====================
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            const images = document.querySelectorAll('.galeria img');
+            const images = document.querySelectorAll('.galeria img'); // Seleciona todas as imagens dentro da galeria
 
+            // Ao clicar na imagem
             images.forEach(img => {
                 img.addEventListener('click', () => {
-                    lightboxImg.src = img.src;
-                    lightbox.classList.add('active');
+                    lightboxImg.src = img.src; // Pega o caminho da imagem clicada
+                    lightbox.classList.add('active'); // Ativa o lightbox
                 });
             });
 
+            // Ao clicar no lightbox ou pressionar ESC, ele fecha
             lightbox.addEventListener('click', () => {
                 lightbox.classList.remove('active');
             });
@@ -405,7 +219,3 @@
     </script>
 </body>
 </html>
-
-</body>
-</html>
-
